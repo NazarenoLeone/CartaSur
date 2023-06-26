@@ -1,0 +1,141 @@
+﻿
+@model IEnumerable<WebApplication1.Models.Venta>
+
+
+<table class="table table-hover">
+	<tr>
+		<th>
+			ID_VENTA
+		</th>
+		<th>
+			Fecha_venta
+		</th>
+		<th>
+			Dni_cliente
+		</th>
+		<th>
+			Nombre_empleado
+		</th>
+		<th>
+			Nombre_cliente
+		</th>
+		<th>
+			Importe_total
+		</th>
+		<th>
+			Direccion_envio_cliente
+		</th>
+		<th>
+			Direccion_sucursal_venta
+		</th>
+		<th>
+			Nombre_sucursal_venta
+		</th>
+		<th>
+			Producto
+		</th>
+		<th>
+			Cantidad
+		</th>
+	</tr>
+
+	@foreach(var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.IdVenta)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.FechaVenta)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DniCliente)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.NombreEmpleado)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.NombreCliente)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ImporteTotal)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DireccionEnvioCliente)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DireccionSucursalVenta)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.NombreSucursalVenta)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Producto)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Cantidad)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.IdVenta}) |
+				@Html.ActionLink("Details", "Details", new { id = item.IdVenta}) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.IdVenta}) |
+			</td>
+		</tr>
+	}
+</table>
+<button id="miBoton" class="mi-boton" type="button" onclick="mostrarDato()">Mostrar Mayor Dia Ventas</button>
+
+
+
+
+<script>
+	function mostrarDato() {
+		//string query = "SELECT TOP 1 Fecha_venta, SUM(Cantidad) FROM ventas WHERE Cantidad = (SELECT MAX(B.Cantidad) FROM ventas B WHERE B.ID_VENTA = ventas.ID_VENTA) GROUP BY Fecha_venta;";		
+		const query = "SELECT * FROM ventas";
+		console.log(query);
+		//console.log(encontrarDiaMasVentas());
+	}
+</script>
+
+<!--<script>
+	function encontrarDiaMasVentas(ventas) {
+		let maxVentas = 0;
+		let diaMasVentas = null;
+
+		// Creamos un objeto para agrupar las ventas por día
+		const ventasPorDia = {};
+
+		// Recorremos la lista de ventas y agrupamos por día
+		ventas.forEach(venta => {
+			const fecha = venta.fecha.split(' ')[0]; // Obtenemos solo la parte de la fecha
+			if (ventasPorDia.hasOwnProperty(fecha)) {
+				ventasPorDia[fecha] += venta.cantidad;
+			} else {
+				ventasPorDia[fecha] = venta.cantidad;
+			}
+		});
+
+		// Buscamos el día con más ventas
+		for (const dia in ventasPorDia) {
+			if (ventasPorDia[dia] > maxVentas) {
+				maxVentas = ventasPorDia[dia];
+				diaMasVentas = dia;
+			}
+		}
+
+		return diaMasVentas;
+	}
+
+	// Ejemplo de uso
+	//const ventas = [
+	//	{ fecha: '26/2/2023 09:00:00', cantidad: 1 },
+	//	{ fecha: '15/4/2023 11:00:00', cantidad: 2 },
+	//	{ fecha: '16/6/2023 12:00:00', cantidad: 3 },
+	//	{ fecha: '6/2/2023 09:00:00', cantidad: 1 },
+	//	{ fecha: '6/2/2023 09:00:00', cantidad: 3 }
+	//];
+
+	//const diaMasVentas = encontrarDiaMasVentas(ventas);
+	//console.log('El día con más ventas fue:', diaMasVentas);
+</script>
+-->

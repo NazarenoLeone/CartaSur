@@ -1,0 +1,62 @@
+-- Creo la tabla
+
+CREATE TABLE ventas (
+  ID_VENTA INT NOT NULL PRIMARY KEY,
+  Fecha_venta DATETIME,
+  Dni_cliente VARCHAR(10),
+  Nombre_empleado VARCHAR(100),
+  Nombre_cliente VARCHAR(100),
+  Importe_total DECIMAL(10,2),
+  Direccion_envio_cliente VARCHAR(100),
+  Direccion_sucursal_venta VARCHAR(100),
+  Nombre_sucursal_venta VARCHAR(100),
+  Producto VARCHAR(20),
+  Cantidad INT
+);
+
+-- Inserto los datos a la tabla
+
+INSERT INTO ventas
+(ID_VENTA, Fecha_venta, Dni_cliente, Nombre_empleado, Nombre_cliente, Importe_total, Direccion_envio_cliente, Direccion_sucursal_venta, Nombre_sucursal_venta, Producto, Cantidad)
+VALUES (1, '2023-06-23 10:00:00', '12500644', 'Juan Pérez', 'Cliente A', 100.50, 'Calle Principal 123', 'Av. Hipolito Irigoyen 2456', 'Sucursal A', 'Televisor 32"', 1);
+
+INSERT INTO ventas
+(ID_VENTA, Fecha_venta, Dni_cliente, Nombre_empleado, Nombre_cliente, Importe_total, Direccion_envio_cliente, Direccion_sucursal_venta, Nombre_sucursal_venta, Producto, Cantidad)
+VALUES (2, '2023-04-15 11:00:00', '35694871', 'Ramon Valdez', 'Maria Díaz', 100.50, 'Calle Principal 123', 'Av. Corrientes 164', 'Sucursal B', 'Tablet', 2);
+
+INSERT INTO ventas
+(ID_VENTA, Fecha_venta, Dni_cliente, Nombre_empleado, Nombre_cliente, Importe_total, Direccion_envio_cliente, Direccion_sucursal_venta, Nombre_sucursal_venta, Producto, Cantidad)
+VALUES (3, '2023-06-16 12:00:00', '27801506', 'Ramon Valdez', 'Hugo Sanchez', 100.50, 'Calle Principal 123', 'Av. Hipolito Irigoyen 2456', 'Sucursal B', 'Teclado', 3);
+
+
+INSERT INTO ventas
+(ID_VENTA, Fecha_venta, Dni_cliente, Nombre_empleado, Nombre_cliente, Importe_total, Direccion_envio_cliente, Direccion_sucursal_venta, Nombre_sucursal_venta, Producto, Cantidad)
+VALUES (4, '2023-02-06 09:00:00', '18300674', 'Pedro Pereira', 'Juan Lopez', 100.50, 'Calle Principal 123', 'Av. Corrientes 164', 'Sucursal A', 'Televisor 27"', 1);
+
+
+INSERT INTO ventas
+(ID_VENTA, Fecha_venta, Dni_cliente, Nombre_empleado, Nombre_cliente, Importe_total, Direccion_envio_cliente, Direccion_sucursal_venta, Nombre_sucursal_venta, Producto, Cantidad)
+VALUES (5, '2023-06-23 13:00:00', '29463510', 'Juan Pérez', 'Alejandra Silva', 100.50, 'Calle Principal 123', 'Av. Hipolito Irigoyen 2456', 'Sucursal A', 'Televisor 32"', 3);
+
+-- Modifico la tabla
+
+UPDATE ventas
+SET Fecha_venta = '2023-02-26 09:00:00'
+WHERE ID_VENTA = 1;
+
+UPDATE ventas
+SET Importe_total = 300
+WHERE ID_VENTA = 5;
+
+
+
+-- Seleccionar el dia que mas productos se vendieron
+
+SELECT TOP 1 Fecha_venta, SUM(Cantidad) 
+FROM ventas 
+WHERE Cantidad = (SELECT MAX(B.Cantidad) FROM ventas B WHERE B.ID_VENTA = ventas.ID_VENTA) 
+GROUP BY Fecha_venta
+;
+
+
+SELECT * FROM ventas;

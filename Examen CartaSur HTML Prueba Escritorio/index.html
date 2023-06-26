@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados</title>
+    <link rel="preload" href="estilos/estilos.css" as="style">
+    <link href="estilos/estilos.css" rel="stylesheet">
+    <link href="estilos/normalize.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300&display=swap" rel="stylesheet">
+</head>
+
+<body id="cuerpo">
+
+    <header>
+        <h1>CartaSur</h1>
+    </header>
+    <div id="empleados" class="contenedor-main">
+        <main class="menu">
+            <div class="contenedor-lista" id="contacto">
+                <form action="#" method="post" class="formulario" id="empleado-form">
+                    <fieldset>
+                        <legend>Empleados</legend>
+                        <div class="contenedor-campos grid">
+
+                            <div class="campo c1">
+                                <label>Empleados Activos:</label>
+                                <div class="contenedor-emp-act-inact">
+                                    <!-- <ul id="data-list"></ul> -->
+                                    <ul id="employee-list-a"></ul>
+                                </div>
+                            </div>
+
+                            <div class="campo c2">
+                                <label class="emp-inact">Empleados Inactivos:</label>
+                                <div class="contenedor-emp-act-inact">
+                                    <ul class="lista" id="employee-list-i"></ul>
+                                </div>
+                            </div>
+
+                            <div class="campo c3">
+                                <label>Lista de Empleados:</label>
+                                <div class="contenedor-emp-act-inact3">
+                                    <ul id="employee-list"></ul>
+                                    <ul id="data-list"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset-2">
+                        <legend>Agregar Nuevo Empleado</legend>
+                        <div class="campo">
+                            <label for="nombre">Nombre</label>
+                            <input class="input-ttes" type="text" id="nombre" name="nombre" placeholder=" Ingrese Nombre" required>
+                        </div>
+                        <div class="campo">
+                            <label for="apellido" >Apellido</label>
+                            <input class="input-ttes" type="text" id="apellido" name="nombre" placeholder=" Ingrese Apellido" required>
+                        </div>
+                        <div class="campo">
+                            <label for="estado">Estado:</label>
+                            <select class="input-ttes" id="estado" required>
+                                <option value="activo">Activo</option>
+                                <option value="inactivo">Inactivo</option>
+                            </select>
+                        </div>
+                        <div class="alinear-derecha flex w-sm-100">
+                            <input class="boton" type="submit" value="Agregar">
+                        </div>
+                        <div class="alinear-derecha flex w-sm-100" id="d-json"></div>
+                    </fieldset>
+                </form>
+                <ul id="data-list"></ul>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; Nazareno Leone, 2023</p>
+    </footer>
+    <script src="https://kit.fontawesome.com/ce53624a65.js" crossorigin="anonymous"></script>
+    <script src="app/app.js"></script>
+</body>
+
+</html>
